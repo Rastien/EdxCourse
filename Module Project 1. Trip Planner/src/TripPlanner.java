@@ -4,7 +4,7 @@ public class TripPlanner {
 
     public static void main (String[] args){
 
-        Scanner input = new Scanner(System.in);
+        Scanner input = new Scanner (System.in);
 
         greeting(input);
         travelTimeAndBudget(input);
@@ -70,12 +70,14 @@ public class TripPlanner {
         int hourDifference;
         int timeAtMidnight;
         int timeAtNoon;
+        int noonStart=12;
+        int midnightStart=24;
 
         System.out.print("What is the time difference, in hours, between your home and your destination? ");
         hourDifference = input.nextInt();
 
-        timeAtNoon=noonCalculations(hourDifference);
-        timeAtMidnight=midnightCalculations(hourDifference);
+        timeAtNoon=timeDifferenceCalculator(hourDifference,noonStart);
+        timeAtMidnight=timeDifferenceCalculator(hourDifference,midnightStart);
 
         System.out.println("That means that when it is midnight at home it will be "+timeAtMidnight+":00 in your travel destination");
         System.out.println("and when it is noon at home it will be "+timeAtNoon+":00");
@@ -103,37 +105,23 @@ public class TripPlanner {
         double twoDecimal =(double)changed;
         return twoDecimal/100;
     }
-    private static int midnightCalculations (int hourDifference){
-        int timeAtMidnight;
-        if(hourDifference>=0) {
-            if(hourDifference<24) {
-                timeAtMidnight = 0 + hourDifference;
-            }else{
-                timeAtMidnight =0+(hourDifference%24);
-            }
-        }else{
-            if(hourDifference>=-24) {
-                timeAtMidnight = 24 + hourDifference;
-            }else{
-                timeAtMidnight = 24 + (hourDifference%24);
-            }
-        }
-        return timeAtMidnight;
-    }
-    private static int noonCalculations(int hourDifference){
+    private static int timeDifferenceCalculator(int hourDifference,int startTime){
         int timeAtNoon;
         if(hourDifference>=0) {
-            if(hourDifference<12) {
+            if(hourDifference<startTime) {
                 timeAtNoon = 0 + hourDifference;
             }else{
                 timeAtNoon =0+(hourDifference%12);
             }
         }else{
-            if(hourDifference>=-12) {
-                timeAtNoon = 12 + hourDifference;
+            if(hourDifference>=-startTime) {
+                timeAtNoon = startTime + hourDifference;
             }else{
-                timeAtNoon = 12 + (hourDifference%12+12);
+                timeAtNoon = startTime + (hourDifference%startTime);
             }
+        }
+        if(startTime < 24){
+            timeAtNoon=timeAtNoon+startTime;
         }
         return timeAtNoon;
     }
