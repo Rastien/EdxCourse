@@ -6,9 +6,9 @@ public class TripPlanner {
 
         Scanner input = new Scanner (System.in);
 
-        greeting(input);
-        travelTimeAndBudget(input);
-        timeDifference(input);
+        //greeting(input);
+        //travelTimeAndBudget(input);
+        //timeDifference(input);
         countryArea(input);
 
     }
@@ -90,6 +90,7 @@ public class TripPlanner {
         System.out.print("What is the square area of your destination country in km2? ");
         countryKiloMetersSqr = input.nextInt();
         countryKiloMetersSqr *=0.38610;
+        countryKiloMetersSqr = round(countryKiloMetersSqr);
         System.out.println("That is "+countryKiloMetersSqr+" in miles");
         nextSection();
     }
@@ -109,9 +110,9 @@ public class TripPlanner {
         int timeAtNoon;
         if(hourDifference>=0) {
             if(hourDifference<startTime) {
-                timeAtNoon = 0 + hourDifference;
+                timeAtNoon = hourDifference;
             }else{
-                timeAtNoon =0+(hourDifference%12);
+                timeAtNoon =(hourDifference%12);
             }
         }else{
             if(hourDifference>=-startTime) {
