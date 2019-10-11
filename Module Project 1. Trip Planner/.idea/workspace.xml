@@ -16,8 +16,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/TripPlanner.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="274">
-              <caret line="109" column="32" selection-start-line="109" selection-start-column="32" selection-end-line="109" selection-end-column="32" />
+            <state relative-caret-position="136">
+              <caret line="8" column="8" lean-forward="true" selection-start-line="8" selection-start-column="8" selection-end-line="8" selection-end-column="8" />
               <folding>
                 <element signature="method#greeting#0;class#TripPlanner#0" />
                 <element signature="method#travelTimeAndBudget#0;class#TripPlanner#0" />
@@ -25,6 +25,7 @@
                 <element signature="method#countryArea#0;class#TripPlanner#0" />
                 <element signature="method#nextSection#0;class#TripPlanner#0" />
                 <element signature="method#round#0;class#TripPlanner#0" />
+                <element signature="method#timeDifferenceCalculator#0;class#TripPlanner#0" />
               </folding>
             </state>
           </provider>
@@ -149,8 +150,8 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/TripPlanner.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="274">
-          <caret line="109" column="32" selection-start-line="109" selection-start-column="32" selection-end-line="109" selection-end-column="32" />
+        <state relative-caret-position="136">
+          <caret line="8" column="8" lean-forward="true" selection-start-line="8" selection-start-column="8" selection-end-line="8" selection-end-column="8" />
           <folding>
             <element signature="method#greeting#0;class#TripPlanner#0" />
             <element signature="method#travelTimeAndBudget#0;class#TripPlanner#0" />
@@ -158,6 +159,7 @@
             <element signature="method#countryArea#0;class#TripPlanner#0" />
             <element signature="method#nextSection#0;class#TripPlanner#0" />
             <element signature="method#round#0;class#TripPlanner#0" />
+            <element signature="method#timeDifferenceCalculator#0;class#TripPlanner#0" />
           </folding>
         </state>
       </provider>

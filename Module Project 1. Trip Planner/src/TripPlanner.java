@@ -6,9 +6,9 @@ public class TripPlanner {
 
         Scanner input = new Scanner (System.in);
 
-        //greeting(input);
-        //travelTimeAndBudget(input);
-        //timeDifference(input);
+        greeting(input);
+        travelTimeAndBudget(input);
+        timeDifference(input);
         countryArea(input);
 
     }
