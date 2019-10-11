@@ -6,83 +6,136 @@ public class TripPlanner {
 
         Scanner input = new Scanner(System.in);
 
-        //greeting(input);
+        greeting(input);
         travelTimeAndBudget(input);
         timeDifference(input);
         countryArea(input);
-        round(input);
-        hackerProblem(input);
 
     }
 
+    //MAIN METHODS
     private static void greeting(Scanner input) {
+        //SECTION VARIABLES
         String name;
         String destination;
 
+        //GET AND SETS
+        System.out.println();
         System.out.println("Welcome to Vacation Planner!");
         System.out.print("What is your name? ");
         name = input.nextLine();
-        System.out.println();
 
         System.out.print("Nice to meet you "+name+", where are you travelling to? ");
         destination = input.nextLine();
-        System.out.println();
-
         System.out.println("Great! "+destination+" sounds like a great trip");
 
         nextSection();
 
     }
-
     private static void travelTimeAndBudget(Scanner input) {
-        int daysTrav=0;
-        double travelMoney=0;
+        //SECTION VARIABLES
+        int daysTrav;
+        double travelMoney;
         String currencySymbol;
         double converstionRate;
-        double dailySpend;
+        double dailySpendDollar;
+        double totalSpendLocalCurrency;
+        double dailySpendLocalCurrency;
 
         //GET AND SET SECTION FOR THE VARIABLES LISTED ABOVE
         System.out.print("How many days are you going to spend travelling? ");
         daysTrav = input.nextInt();
         System.out.print("How much money, in USD are you planning to spend on your trip? ");
         travelMoney = input.nextInt();
+        System.out.print("What is the three letter currency symbol for your travel destination? ");
+        currencySymbol = input.next();
+        System.out.print("How many "+currencySymbol+" are there in 1 USD? ");
+        converstionRate = input.nextDouble();
+        System.out.println();
 
-        //System.out.print("What is the three letter currency symbol for your travel destination? ");
-        //currencySymbol = input.next();
-        //System.out.print("How many "+currencySymbol+" are there in 1 USD? ");
-        //converstionRate = input.nextDouble();
+        //UPDATE DAILY SPEND AND ROUND
+        totalSpendLocalCurrency = round((travelMoney*converstionRate));
+        dailySpendDollar = round((travelMoney/daysTrav));
+        dailySpendLocalCurrency = round((totalSpendLocalCurrency/daysTrav));
 
-        //UPDATE DAILY SPEND
-        dailySpend = travelMoney/daysTrav;
 
         //PRINT OUT FOR THE VARIABLES BEING MANIPULATED IN VARIOUS WAYS
-        System.out.println("If you are travelling for "+daysTrav+" days that is the same as "+(daysTrav*24)+" hours or "+(daysTrav*1440)+" minutes or "+(daysTrav*86400));
-        System.out.println("If you are going to spend $"+travelMoney+" USD that means per day you can spend up to $"+ round(dailySpend) + " USD");
+        System.out.println("If you are travelling for "+daysTrav+" days that is the same as "+(daysTrav*24)+" hours or "+(daysTrav*1440)+" minutes or "+(daysTrav*86400)+" seconds");
+        System.out.println("If you are going to spend $"+travelMoney+" USD that means per day you can spend up to $"+ dailySpendDollar + " USD");
+        System.out.println("Your total budget in "+currencySymbol+" is "+totalSpendLocalCurrency+" "+currencySymbol+", which per day is "+dailySpendLocalCurrency+ " MXC");
 
+        nextSection();
     }
-
     private static void timeDifference(Scanner input) {
-    }
+        int hourDifference;
+        int timeAtMidnight;
+        int timeAtNoon;
 
+        System.out.print("What is the time difference, in hours, between your home and your destination? ");
+        hourDifference = input.nextInt();
+
+        timeAtNoon=noonCalculations(hourDifference);
+        timeAtMidnight=midnightCalculations(hourDifference);
+
+        System.out.println("That means that when it is midnight at home it will be "+timeAtMidnight+":00 in your travel destination");
+        System.out.println("and when it is noon at home it will be "+timeAtNoon+":00");
+        nextSection();
+
+    }
     private static void countryArea(Scanner input) {
+
+        double countryKiloMetersSqr;
+        System.out.print("What is the square area of your destination country in km2? ");
+        countryKiloMetersSqr = input.nextInt();
+        countryKiloMetersSqr *=0.38610;
+        System.out.println("That is "+countryKiloMetersSqr+" in miles");
+        nextSection();
     }
 
-    private static void round(Scanner input) {
-    }
-
-    private static void hackerProblem(Scanner input) {
-    }
-
+    //UTILITY METHODS
     private static void nextSection(){
         System.out.println("**************************************");
         System.out.println();
     }
-
     private static double round (double target){
         target=target*100;
         int changed = (int)target;
         double twoDecimal =(double)changed;
         return twoDecimal/100;
+    }
+    private static int midnightCalculations (int hourDifference){
+        int timeAtMidnight;
+        if(hourDifference>=0) {
+            if(hourDifference<24) {
+                timeAtMidnight = 0 + hourDifference;
+            }else{
+                timeAtMidnight =0+(hourDifference%24);
+            }
+        }else{
+            if(hourDifference>=-24) {
+                timeAtMidnight = 24 + hourDifference;
+            }else{
+                timeAtMidnight = 24 + (hourDifference%24);
+            }
+        }
+        return timeAtMidnight;
+    }
+    private static int noonCalculations(int hourDifference){
+        int timeAtNoon;
+        if(hourDifference>=0) {
+            if(hourDifference<12) {
+                timeAtNoon = 0 + hourDifference;
+            }else{
+                timeAtNoon =0+(hourDifference%12);
+            }
+        }else{
+            if(hourDifference>=-12) {
+                timeAtNoon = 12 + hourDifference;
+            }else{
+                timeAtNoon = 12 + (hourDifference%12+12);
+            }
+        }
+        return timeAtNoon;
     }
     
 }
