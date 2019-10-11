@@ -107,24 +107,24 @@ public class TripPlanner {
         return twoDecimal/100;
     }
     private static int timeDifferenceCalculator(int hourDifference,int startTime){
-        int timeAtNoon;
+        int calculatedReturnTime;
         if(hourDifference>=0) {
             if(hourDifference<startTime) {
-                timeAtNoon = hourDifference;
+                calculatedReturnTime = hourDifference;
             }else{
-                timeAtNoon =(hourDifference%12);
+                calculatedReturnTime =(hourDifference%12);
             }
         }else{
             if(hourDifference>=-startTime) {
-                timeAtNoon = startTime + hourDifference;
+                calculatedReturnTime = startTime + hourDifference;
             }else{
-                timeAtNoon = startTime + (hourDifference%startTime);
+                calculatedReturnTime = startTime + (hourDifference%startTime);
             }
         }
         if(startTime < 24){
-            timeAtNoon=timeAtNoon+startTime;
+            calculatedReturnTime=calculatedReturnTime+startTime;
         }
-        return timeAtNoon;
+        return calculatedReturnTime;
     }
     
 }
